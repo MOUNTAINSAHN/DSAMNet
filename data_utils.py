@@ -85,7 +85,7 @@ class LoadDatasetFromFolder(Dataset):
 
         self.hr1_filenames = [join(hr1_path, x) for x in datalist if is_image_file(x)]
         self.hr2_filenames = [join(hr2_path, x) for x in datalist if is_image_file(x)]
-        self.lab_filenames = [join(lab_path, x) for x in datalist if is_image_file(x)]
+        self.lab_filenames = [join(lab_path, x[:-3]+"png") for x in datalist if is_image_file(x)]
 
         self.transform = get_transform(convert=True, normalize=True)  # convert to tensor and normalize to [-1,1]
         self.label_transform = get_transform()  # only convert to tensor
